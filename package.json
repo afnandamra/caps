@@ -5,9 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon",
-    "test": "jest --coverage --verbose --watchAll",
-    "lint": "eslint '**/*.js'"
+    "watch": "nodemon index.js",
+    "lint": "eslint **/*.js",
+    "test-watch": "jest --watchAll",
+    "test": "jest --coverage --verbose"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "repository": {
     "type": "git",
