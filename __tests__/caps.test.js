@@ -1,36 +1,37 @@
 'use strict';
 
 const faker = require('faker');
-const caps = require('../src/caps');
+// const caps = require('../src/caps');
 const vendor = require('../src/vendor');
 const driver = require('../src/driver');
-let testOrder = {
-  store: '1-206-flowers',
-  orderID: faker.datatype.uuid(),
-  customer: faker.name.findName(),
-  address: `${faker.address.city()}, ${faker.address.stateAbbr()}`,
-};
-let testPayload = {
-  event: 'pickup',
-  time: new Date().toISOString(),
-  payload: testOrder,
-};
 
 describe('Events test', () => {
   let consoleSpy;
+
+  let testOrder = {
+    store: '1-206-flowers',
+    orderID: faker.datatype.uuid(),
+    customer: faker.name.findName(),
+    address: `${faker.address.city()}, ${faker.address.stateAbbr()}`,
+  };
+  let testPayload = {
+    event: 'pickup',
+    time: new Date().toISOString(),
+    payload: testOrder,
+  };
+
   jest.useFakeTimers();
 
-  beforeEach(() => {
+  beforeAll(() => {
     consoleSpy = jest.spyOn(console, 'log').mockImplementation();
   });
-  afterEach(() => {
+  afterAll(() => {
     consoleSpy.mockRestore();
   });
 
   it('starts new order', () => {
     vendor.newOrder();
     expect(consoleSpy).toHaveBeenCalled();
-    expect(setTimeout).toHaveBeenCalled();
   });
   it('driver picks up orders after 1 second', () => {
     driver.pickUp(testPayload);
@@ -45,6 +46,6 @@ describe('Events test', () => {
   it('vendor sends thank you note', () => {
     vendor.thankYou(testPayload);
     expect(consoleSpy).toHaveBeenCalled();
-    expect(setTimeout).toHaveBeenCalledTimes(3);
+    expect(setTimeout).toHaveBeenCalledTimes(2);
   });
 });

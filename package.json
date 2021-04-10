@@ -8,7 +8,7 @@
     "watch": "nodemon index.js",
     "lint": "eslint **/*.js",
     "test-watch": "jest --watchAll",
-    "test": "jest --coverage --verbose"
+    "test": "jest --coverage --verbose --detectOpenHandles"
   },
   "jest": {
     "testEnvironment": "node"

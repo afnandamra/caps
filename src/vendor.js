@@ -1,6 +1,5 @@
 'use strict';
 
-
 require('dotenv').config();
 const events = require('../events');
 const faker = require('faker');
@@ -18,6 +17,7 @@ function createOrder() {
 }
 
 function newOrder() {
+  console.log('New order is ready to pickup');
   events.emit('pickup', {
     event: 'pickup',
     time: new Date().toISOString(),
@@ -28,12 +28,12 @@ function newOrder() {
 // still not sure about the timeouts
 // Step 4: Order delivered
 function thankYou(payload) {
-//   setTimeout(() => {
-    payload.event = 'delivered';
-    payload.time = new Date().toISOString();
-    console.log(`VENDOR: Thank you for delivering ${payload.payload.orderID}`);
-    console.log('EVENT ', payload);
-//   }, 3000);
+  //   setTimeout(() => {
+  payload.event = 'delivered';
+  payload.time = new Date().toISOString();
+  console.log(`VENDOR: Thank you for delivering ${payload.payload.orderID}`);
+  console.log('EVENT ', payload);
+  //   }, 3000);
 }
 
 module.exports = {
