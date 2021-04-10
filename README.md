@@ -40,6 +40,7 @@ Below is a UML of my application (created at https://app.diagrams.net)
 
 ![UML Lab11](assets/lab11.jpg)
 
-## Resources
+## Resources and Collaboration
 
-CAPS system overview from [Codefellows](https://codefellows.github.io/code-401-javascript-guide/curriculum/apps-and-libraries/caps/)
+- CAPS system overview from [Codefellows](https://codefellows.github.io/code-401-javascript-guide/curriculum/apps-and-libraries/caps/)
+- I did the lab with Baha Zghayar and Zaid Al-Asfar
